@@ -1,0 +1,80 @@
+/* style.css */
+body, * {
+	font-family: Arial, 'Open Sans';
+	font-size: 10pt;
+} 
+
+a.inline-edit {
+	text-decoration: underline;
+}
+
+.modal .alert {
+	padding: .2em .5em;
+	font-size: 10pt;
+	color: #fff;
+}
+
+.form-horizontal .control-label {
+    padding-top: 10px;
+    color: #2A3F54;
+    text-transform: uppercase;
+    font-size: 9pt;
+}
+
+.modal-footer,
+.modal-header {
+	background: #2A3F54;
+	color: #fff;
+}
+
+.btn,
+.modal-content {
+	border-radius: 0;
+}
+
+.modal-header .close {
+    color: #fff;
+    opacity: 1;
+}
+
+table.jambo_table tr td {
+	font-size: 9pt;
+}
+
+table.jambo_table thead {
+	font-size: 8pt;
+	text-transform: uppercase;
+}
+
+.main_menu_side a,
+.main_menu_side .nav.child_menu a {
+	text-transform: uppercase;
+	font-size: 80%;
+}
+
+a.module-title {
+	font-size: 12pt;
+	text-transform: uppercase;
+}
+
+body,
+.navbar.nav_title,
+.left_col {
+    background: #405467;
+}
+
+table.jambo_table thead {
+    background: #405467;
+	color:#ffffff;
+	font-weight: normal;
+}
+
+table.jambo_table tfoot {
+	background: #405467;
+	color:#ffffff;
+	font-weight: normal;
+}
+
+footer {
+	background: #F7F7F7;
+}

@@ -1,0 +1,271 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+--
+-- Database: `dist`
+--
+
+
+
+
+CREATE TABLE `brand` (
+  `UID` int(11) NOT NULL AUTO_INCREMENT,
+  `NMBRAND` varchar(50) DEFAULT NULL,
+  `DESCRIPTION` varchar(100) DEFAULT NULL,
+  `USR` varchar(20) DEFAULT NULL,
+  `DATEADDED` datetime DEFAULT NULL,
+  `DATEMODIFIED` datetime DEFAULT NULL,
+  PRIMARY KEY (`UID`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+
+INSERT INTO brand VALUES
+("9","Philips","","IT","2017-04-26 00:00:00","2017-04-26 00:00:00"),
+("10","Broco","","IT","2017-04-26 00:00:00","2017-04-26 00:00:00"),
+("11","Miyako","","IT","2017-04-26 00:00:00","2017-04-26 00:00:00"),
+("12","Cosmos","","IT","2017-04-26 00:00:00","2017-04-26 00:00:00"),
+("13","Maspion","","IT","2017-04-26 00:00:00","2017-04-26 00:00:00");
+
+
+
+
+CREATE TABLE `category` (
+  `UID` int(11) NOT NULL AUTO_INCREMENT,
+  `CTGRY` int(11) DEFAULT NULL,
+  `NMCATGRY` varchar(100) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `USR` varchar(20) DEFAULT NULL,
+  `DATEADDED` datetime DEFAULT NULL,
+  `DATEMODIFIED` datetime DEFAULT NULL,
+  PRIMARY KEY (`UID`)
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=latin1;
+
+
+INSERT INTO category VALUES
+("77","","Saklar","","IT","2017-04-26 00:00:00","2017-04-26 00:00:00"),
+("78","","Stop Kontak","","IT","2017-04-26 00:00:00","2017-04-26 00:00:00"),
+("79","","Lampu LED","","IT","2017-04-26 00:00:00","2017-04-26 00:00:00"),
+("80","","Lampu PLC","","IT","2017-04-26 00:00:00","2017-04-26 00:00:00"),
+("81","","Rice Cooker","","IT","2017-04-26 00:00:00","2017-04-26 00:00:00"),
+("82","","Kabel","","IT","2017-04-26 00:00:00","2017-04-26 00:00:00"),
+("83","","Obeng","","IT","2017-04-26 00:00:00","2017-04-26 00:00:00");
+
+
+
+
+CREATE TABLE `parameter` (
+  `UID` int(11) NOT NULL AUTO_INCREMENT,
+  `NM` varchar(50) DEFAULT NULL,
+  `VALUE` varchar(100) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) NOT NULL,
+  `USR` varchar(50) DEFAULT NULL,
+  `DATEADDED` datetime DEFAULT NULL,
+  `DATEMODIFIED` datetime DEFAULT NULL,
+  PRIMARY KEY (`UID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+
+INSERT INTO parameter VALUES
+("1","SKU Product","SKUYYYYMM#####","Product : SKU Code Prefix","IT","2017-05-03 00:00:00","2017-05-03 00:00:00"),
+("2","Cash Order","CASHYYYYMMDD######","Cash order prefix","IT","2017-05-03 00:00:00","2017-05-03 00:00:00"),
+("3","Purchase Order","PORDYYYYMMDD#####","Purchase order prefix","IT","2017-05-09 00:00:00","2017-05-09 00:00:00");
+
+
+
+
+CREATE TABLE `product` (
+  `UID` int(11) NOT NULL AUTO_INCREMENT,
+  `SKU` varchar(50) DEFAULT NULL,
+  `CDPROD` varchar(50) DEFAULT NULL,
+  `NMPROD` varchar(50) DEFAULT NULL,
+  `CATGRY` int(11) DEFAULT NULL,
+  `WAREHS` int(11) NOT NULL,
+  `BRAND` int(11) NOT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `REMARK` varchar(200) DEFAULT NULL,
+  `STATUS` int(11) DEFAULT NULL,
+  `USR` varchar(50) DEFAULT NULL,
+  `DATEADDED` datetime DEFAULT NULL,
+  `DATEMODIFIED` datetime DEFAULT NULL,
+  PRIMARY KEY (`UID`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+
+
+INSERT INTO product VALUES
+("21","SKU003","C003","Sample Prod","80","1","9","Just Testing","","1","IT","2017-04-27 00:00:00","2017-04-27 00:00:00"),
+("22","SKU004","C004","Sample Product Item","80","1","9","Just Testing","","1","IT","2017-04-27 00:00:00","2017-04-27 00:00:00"),
+("23","SKU005","C005","Sample Product Item","80","1","9","Just Testing","","1","IT","2017-04-26 00:00:00","2017-04-26 00:00:00"),
+("24","SKU006","C006","Sample 0006","80","1","9","Just Testing","","1","IT","2017-04-26 00:00:00","2017-04-26 00:00:00"),
+("25","SKU007","X007","Sample Product Item","80","1","9","Just Testing","","1","IT","2017-04-26 00:00:00","2017-04-26 00:00:00"),
+("29","SKU008","X008","Sample Product Item","80","1","9","Just Testing","","1","IT","2017-04-26 00:00:00","2017-04-26 00:00:00"),
+("30","SKU009","X009","Sample Product Item","80","1","9","Just Testing","","1","IT","2017-04-26 00:00:00","2017-04-26 00:00:00"),
+("32","SKU010","P001","Sample Product Item","80","1","9","Just Testing","","1","IT","2017-04-26 00:00:00","2017-04-26 00:00:00");
+
+
+
+
+CREATE TABLE `product_pricing` (
+  `UID` int(11) NOT NULL AUTO_INCREMENT,
+  `PROD` int(11) DEFAULT NULL,
+  `BASEPRC` int(11) DEFAULT NULL,
+  `SELLPRC` int(11) DEFAULT NULL,
+  `GRP` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`UID`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+
+
+INSERT INTO product_pricing VALUES
+("16","19","0","15000",""),
+("17","20","0","14000",""),
+("18","21","0","15000",""),
+("19","22","0","21000",""),
+("20","23","123000","22500",""),
+("21","24","123000","62000",""),
+("22","25","123000","14500",""),
+("23","26","123000","140000",""),
+("24","27","123000","90000",""),
+("25","28","123000","56000",""),
+("26","29","123000","32000",""),
+("27","30","123000","7000",""),
+("28","31","123000","140000",""),
+("29","32","123000","140000","");
+
+
+
+
+CREATE TABLE `purchase_transaction` (
+  `UID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `TRANSNO` varchar(20) DEFAULT NULL,
+  `TRANSDATE` datetime DEFAULT NULL,
+  `TRANSTYPE` int(11) DEFAULT NULL,
+  `MEMO` varchar(200) DEFAULT NULL,
+  `DISCOUNT` int(11) DEFAULT NULL,
+  `USR` varchar(20) DEFAULT NULL,
+  `DATEADDED` datetime DEFAULT NULL,
+  `DATEMODIFIED` datetime DEFAULT NULL,
+  PRIMARY KEY (`UID`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+
+
+INSERT INTO purchase_transaction VALUES
+("14","PORD2017050300001","2017-05-03 00:00:00","8","adad","","IT","2017-05-03 00:00:00","2017-05-03 00:00:00");
+
+
+
+
+CREATE TABLE `purchase_transaction_detail` (
+  `UID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `PUID` int(11) DEFAULT NULL,
+  `PROD` int(11) DEFAULT NULL,
+  `PRICE` int(11) DEFAULT NULL,
+  `DISCOUNT` int(11) DEFAULT NULL,
+  `QTY` int(11) DEFAULT NULL,
+  PRIMARY KEY (`UID`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+
+
+INSERT INTO purchase_transaction_detail VALUES
+("37","14","21","15000","0","100"),
+("38","14","22","21000","0","50"),
+("39","14","25","14500","0","40"),
+("40","14","30","7000","0","100");
+
+
+
+
+CREATE TABLE `sales_transaction` (
+  `UID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `TRANSNO` varchar(20) DEFAULT NULL,
+  `TRANSDATE` datetime DEFAULT NULL,
+  `TRANSTYPE` int(11) DEFAULT NULL,
+  `MEMO` varchar(200) DEFAULT NULL,
+  `DISCOUNT` int(11) DEFAULT NULL,
+  `USR` varchar(20) DEFAULT NULL,
+  `DATEADDED` datetime DEFAULT NULL,
+  `DATEMODIFIED` datetime DEFAULT NULL,
+  PRIMARY KEY (`UID`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+
+
+INSERT INTO sales_transaction VALUES
+("11","CSH-20170428/0001","2017-04-28 00:00:00","8","NEW TRANSACTION","","IT","2017-05-09 00:00:00","2017-05-09 00:00:00"),
+("12","CSH-20170503/0001","2017-05-03 00:00:00","8","sampleadad","","IT","2017-05-03 00:00:00","2017-05-03 00:00:00"),
+("14","CASH20170503000001","2017-05-03 00:00:00","8","memo","","IT","2017-05-03 00:00:00","2017-05-03 00:00:00");
+
+
+
+
+CREATE TABLE `sales_transaction_detail` (
+  `UID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `PUID` int(11) DEFAULT NULL,
+  `PROD` int(11) DEFAULT NULL,
+  `PRICE` int(11) DEFAULT NULL,
+  `DISCOUNT` int(11) DEFAULT NULL,
+  `QTY` int(11) DEFAULT NULL,
+  PRIMARY KEY (`UID`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+
+
+INSERT INTO sales_transaction_detail VALUES
+("30","12","21","15000","0","2"),
+("31","12","24","62000","0","2"),
+("32","12","23","22500","0","1"),
+("33","12","22","21000","5000","1"),
+("34","14","23","22500","0","1"),
+("35","14","25","14500","0","1"),
+("36","14","32","140000","0","1"),
+("37","11","25","14500","5000","4");
+
+
+
+
+CREATE TABLE `supplier` (
+  `UID` int(11) NOT NULL AUTO_INCREMENT,
+  `NM` varchar(50) DEFAULT NULL,
+  `NMPERSON` varchar(50) DEFAULT NULL,
+  `PHONE1` varchar(50) NOT NULL,
+  `PHONE2` varchar(50) NOT NULL,
+  `LOCATE` varchar(100) DEFAULT NULL,
+  `USR` varchar(20) DEFAULT NULL,
+  `DATEADDED` datetime DEFAULT NULL,
+  `DATEMODIFIED` datetime DEFAULT NULL,
+  PRIMARY KEY (`UID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+
+INSERT INTO supplier VALUES
+("1","Sample","12","13","14","15","IT","2017-04-26 00:00:00","2017-04-26 00:00:00");
+
+
+
+
+CREATE TABLE `warehouse` (
+  `UID` int(11) NOT NULL AUTO_INCREMENT,
+  `NM` varchar(20) DEFAULT NULL,
+  `LOCATE` varchar(100) DEFAULT NULL,
+  `DESCRIPTION` varchar(200) DEFAULT NULL,
+  `CITY` varchar(100) DEFAULT NULL,
+  `USR` varchar(20) DEFAULT NULL,
+  `ISDEFAULT` tinyint(1) NOT NULL,
+  `DATEADDED` datetime DEFAULT NULL,
+  `DATEMODIFIED` datetime DEFAULT NULL,
+  PRIMARY KEY (`UID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+
+INSERT INTO warehouse VALUES
+("1","Toko Jembatan Lima","Jalan Jembatan Lima","Warehouse Utama","Jakarta Barat","IT","1","2017-05-03 00:00:00","2017-05-03 00:00:00"),
+("2","Gudang Asemka","","","Jakarta","IT","0","2017-04-26 00:00:00","2017-04-26 00:00:00"),
+("3","My Warehouse","","","Jakarta","IT","0","2017-05-03 00:00:00","2017-05-03 00:00:00");
+
+
+
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
