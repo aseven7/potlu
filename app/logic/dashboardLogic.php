@@ -1,6 +1,6 @@
 <?php
 	class dashboardLogic extends baseLogic {
-		public function run() {
+		public static function run() {
 			parent::load();
 
 			self::assign('title', 'Dashboard');

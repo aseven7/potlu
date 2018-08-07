@@ -1,6 +1,6 @@
 <?php
 	class applicationServicesLogic extends baseLogic {
-		public function run() {
+		public static function run() {
 			// setup ORM
 			ORM::configure('id_column', 'UID');
 

@@ -3,7 +3,7 @@
 		'title' => 'My Apps',
 
 		'viewpath' => APP_PATH . '\\views\\',
-		'baseurl' => 'http://potlu.localhost:8081',
+		'baseurl' => 'http://localhost/potlu',
 
 		'dsn' => 'mysql:host=localhost;dbname=dist',
 		'username' => 'root',

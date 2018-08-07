@@ -1,6 +1,6 @@
 <?php
 	class signOutLogic extends baseLogic {
-		public function run() {
+		public static function run() {
 			parent::load();
 			RedirectHelper::back();
 		}

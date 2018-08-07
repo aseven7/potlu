@@ -233,31 +233,29 @@
       }
     }
 
-    $.get("<?= base_url('apps/services?action=product') ?>", function(data){
+    $.get("<?= base_url('services?action=product') ?>", function(data){
       var $productInput = $('input[name="PRODNM[]"].active');
 
-	  $productInput.typeahead({ 
-	  	items: 10,
-	  	source:data
-	  });
+      $productInput.typeahead({ 
+      items: 10,
+      source:data
+      });
 
-	  $productInput.change(function() {
-  		var current = $productInput.typeahead("getActive");
-  		var $me = $(this);
-		var $currentRow = $me.parents('tr').eq(0);
+      $productInput.change(function() {
+        var current = $productInput.typeahead("getActive");
+        var $me = $(this);
+        var $currentRow = $me.parents('tr').eq(0);
 
-		if (current) {
-			if (current.name == $me.val()) {
-				$currentRow.find('input[name="PRICE[]"]').val(current.price);
-				$currentRow.find('input[name="QTY[]"]').val(1);
-				$currentRow.find('input[name="PROD[]"]').val(current.UID);
-			} else {
-			  
-			}
-		} else {
-		// Nothing is active so it is a new value (or maybe empty value)
-		}
-	  });
+        if (current) {
+          if (current.name == $me.val()) {
+          	$currentRow.find('input[name="PRICE[]"]').val(current.price);
+          	$currentRow.find('input[name="QTY[]"]').val(1);
+          	$currentRow.find('input[name="PROD[]"]').val(current.UID);
+          } 
+        } else {
+        // Nothing is active so it is a new value (or maybe empty value)
+        }
+      });
 	},'json');
 
 	$('.calendarpicker').daterangepicker({
